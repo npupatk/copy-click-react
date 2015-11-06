@@ -38,6 +38,7 @@ h3 {
 .flex-item {
   /*background: #91DBDD;*/
   border: 3px solid white;
+  background-color: #7FFFD4;
   color: #383835;
   /*width: 300px;*/
   /*min-height: 90px;*/
@@ -55,10 +56,10 @@ h3 {
   font-size: 20px;
 }
 
-.hits {
+.hits, .doodadId {
   /*border: 1px dashed yellow;*/
   color: gray;
-  font-size: 12px;
-  padding-top: 10px;
+  font-size: 10px;
+  padding-top: 9px;
 }
 

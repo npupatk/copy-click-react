@@ -1,10 +1,12 @@
 var ClickBox = React.createClass({displayName: "ClickBox",
-  loadClicksFromServer: function() {
+  loadFromServer: function() {
     $.ajax({
       url: this.props.url,
       dataType: 'json',
       cache: false,
       success: function(data) {
+        //!!
+        // console.log(data);
         this.setState({data: data});
       }.bind(this),
       error: function(xhr, status, err){
@@ -13,8 +15,8 @@ var ClickBox = React.createClass({displayName: "ClickBox",
     });
   },
   handleClickSubmit: function(doodad){
-    var doodads = this.state.data;
-    var newDoodad = doodads.concat([doodad]);
+    var doodadData = this.state.data;
+    var newDoodad = doodadData.concat([doodad]);
     this.setState({data: newDoodad});
 
     //submit to server and refresh
@@ -35,8 +37,8 @@ var ClickBox = React.createClass({displayName: "ClickBox",
     return {data: []};
   },
   componentDidMount: function() {
-    this.loadClicksFromServer();
-    setInterval(this.loadClicksFromServer, this.props.pollInterval);
+    this.loadFromServer();
+    setInterval(this.loadFromServer, this.props.pollInterval);
   },
   render: function() {
     return (
@@ -53,42 +55,62 @@ var ClickableList = React.createClass({displayName: "ClickableList",
     var clickableNodes = this.props.data.map(function(clickable){
       return (
         React.createElement("li", {className: "flex-container"}, 
-          React.createElement(Clicker, {doodad: clickable.doodad}, 
-              clickable.hits
+          React.createElement(Clickable, {
+            clickableObj: clickable}
           )
         )
       )
     });
     return (
-      React.createElement("ul", {className: "x"}, 
+      React.createElement("ul", {className: "clickableList"}, 
         clickableNodes
       )
     );
   }
 });
 
-var Clicker = React.createClass({displayName: "Clicker",
-  render: function() {
-    var doodad = this.props.doodad;
-    var hits = this.props.children;
+var Clickable = React.createClass({displayName: "Clickable",
+  onItemClick: function (event) {
+    console.log("Clicked!!!");
+    event.currentTarget.style.backgroundColor = '#CCC';
+  },
+
+  renderCopyButton: function(doodadId) {
     return (
-      React.createElement("div", {className: "flex-item"}, 
+      React.createElement("button", {onclick: "console.log('clicked!!!')"}, "Copy")
+    );
+  },
+
+  render: function() {
+    //!!!
+    // debugger;
+    var doodadId = this.props.clickableObj.id;
+    var doodad = this.props.clickableObj.doodad;
+    var hits = this.props.clickableObj.hits;
+
+    return (
+      React.createElement("div", {className: "flex-item", onClick: this.onItemClick}, 
+        React.createElement("div", {className: "doodadId"}, 
+          "Id: ", doodadId
+        ), 
         React.createElement("div", {className: "doodad"}, 
           doodad
         ), 
         React.createElement("div", {className: "hits"}, 
-          hits
+          "Hits: ", hits
         )
       )
     );
-  }
+  },
+
 });
 
 var ClickableForm = React.createClass({displayName: "ClickableForm",
   handleSubmit: function(e) {
+    // console.log("Submit clicked!!");
     e.preventDefault();
     var doodad = React.findDOMNode(this.refs.doodad).value.trim();
-    // start all new doodads with zero hits
+    // create all new doodads with zero hits
     var hits = 0;
     if(!doodad){
       return;
@@ -112,6 +134,6 @@ var ClickableForm = React.createClass({displayName: "ClickableForm",
 });
 
 React.render(
-  React.createElement(ClickBox, {url: "data.json", pollInterval: 50000}),
+  React.createElement(ClickBox, {url: "data.json", pollInterval: 100000}),
   document.getElementById('content')
 );
