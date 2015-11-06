@@ -105,14 +105,14 @@ var Clickable = React.createClass({
         <CopyButton
           identifyDoodad={doodadId} doodadName={doodadName}>
         </CopyButton>
-        <div className="hits">
-          Hits: {hits}
-        </div>
+        <span className="hits">
+
+        </span>
       </div>
     );
   }
 
-// Test: saved for reference - change thi div's color
+// Test: saved for reference -- change thi div's color
 // In Clickable Class:
   // !! located before render function:
   // onClickColorDiv: function (event) {
@@ -156,6 +156,6 @@ var ClickableForm = React.createClass({
 });
 
 React.render(
-  <ClickBox url="data.json" pollInterval={100000}/>,
+  <ClickBox url="data.json" pollInterval={5000}/>,
   document.getElementById('content')
 );

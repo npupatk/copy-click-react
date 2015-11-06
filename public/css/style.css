@@ -1,10 +1,10 @@
 body {
-  /*background: #BEDCFF;*/ /*light-blue*/
-  background: #6D98AB; /*slate-blue*/
+  background: #BEDCFF; /*light-blue*/
+  /*background: #6D98AB;*/ /*slate-blue*/
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 15px;
   margin: 0;
-  padding: 30px;
+  padding: 10px 30px;
 }
 
 a {
@@ -32,10 +32,8 @@ h3 {
 }
 
 .clickable-item {
-  /*background: #91DBDD;*/
-  border: 2px solid white;
-  /*background-color: #7FFFD4;*/ /*mint-green*/
-  background-color: #00275E; /*midnight-blue*/
+  /*border: 2px solid white;*/
+  /*background-color: #00275E;*/ /*midnight-blue*/
   width: 300px;
   /*min-height: 90px;*/
   /*margin-right: 10px;*/
@@ -49,11 +47,11 @@ h3 {
 .copy-button {
   display: block;
   font-weight: bold;
-  padding: 5px 15px;
+  font-size: 1.1em;
+  padding: 20px 15px;
   margin: 10px auto;
   color: #FEB729;
-  background: -webkit-linear-gradient(#888, #555);
-  background: linear-gradient(#888, #404040);
+  background: linear-gradient(#888, #282828);
   border: 0 none;
   border-radius: 3px;
   cursor: pointer;

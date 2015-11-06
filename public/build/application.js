@@ -42,8 +42,8 @@ var ClickBox = React.createClass({displayName: "ClickBox",
   },
   render: function() {
     return (
-      React.createElement("div", {className: "clickBox"}, 
-        React.createElement(ClickableForm, {onClickSubmit: this.handleClickSubmit}), 
+      React.createElement("div", {className: "clickBox"},
+        React.createElement(ClickableForm, {onClickSubmit: this.handleClickSubmit}),
         React.createElement(ClickableList, {data: this.state.data})
       )
     );
@@ -54,7 +54,7 @@ var ClickableList = React.createClass({displayName: "ClickableList",
   render: function() {
     var clickableNodes = this.props.data.map(function(clickable){
       return (
-        React.createElement("li", {className: "clickable-item"}, 
+        React.createElement("li", {className: "clickable-item"},
           React.createElement(Clickable, {
             clickableObj: clickable}
           )
@@ -62,7 +62,7 @@ var ClickableList = React.createClass({displayName: "ClickableList",
       )
     });
     return (
-      React.createElement("ul", {className: "clickable-item-container"}, 
+      React.createElement("ul", {className: "clickable-item-container"},
         clickableNodes
       )
     );
@@ -101,18 +101,18 @@ var Clickable = React.createClass({displayName: "Clickable",
     var hits = this.props.clickableObj.hits;
 
     return (
-      React.createElement("div", null, 
+      React.createElement("div", null,
         React.createElement(CopyButton, {
           identifyDoodad: doodadId, doodadName: doodadName}
-        ), 
-        React.createElement("div", {className: "hits"}, 
-          "Hits: ", hits
+        ),
+        React.createElement("span", {className: "hits"}
+
         )
       )
     );
   }
 
-// Test: saved for reference - change thi div's color
+// Test: saved for reference -- change thi div's color
 // In Clickable Class:
   // !! located before render function:
   // onClickColorDiv: function (event) {
@@ -147,8 +147,8 @@ var ClickableForm = React.createClass({displayName: "ClickableForm",
 
   render: function(){
     return (
-      React.createElement("form", {className: "clickableForm", onSubmit: this.handleSubmit}, 
-        React.createElement("input", {type: "hits", placeholder: "Add a clickable ...", ref: "doodad"}), 
+      React.createElement("form", {className: "clickableForm", onSubmit: this.handleSubmit},
+        React.createElement("input", {type: "hits", placeholder: "Add a clickable ...", ref: "doodad"}),
         React.createElement("input", {type: "submit", value: "Submit"})
       )
     );
@@ -156,6 +156,6 @@ var ClickableForm = React.createClass({displayName: "ClickableForm",
 });
 
 React.render(
-  React.createElement(ClickBox, {url: "data.json", pollInterval: 100000}),
+  React.createElement(ClickBox, {url: "data.json", pollInterval: 5000}),
   document.getElementById('content')
 );
