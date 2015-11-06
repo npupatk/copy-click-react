@@ -1,5 +1,6 @@
 body {
-  background: #BEDCFF; /*light-blue*/
+  /*background: #BEDCFF;*/ /*light-blue*/
+  background: #6D98AB; /*slate-blue*/
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 15px;
   margin: 0;
@@ -15,12 +16,6 @@ a:hover {
   text-decoration: underline;
 }
 
-h1, h2, h3, h4 {
-  font-weight: bold;
-  margin: 0 0 15px;
-  padding: 0;
-}
-
 h3 {
   font-size: 1.5em;
 }
@@ -29,37 +24,53 @@ h3 {
   /*border: 1px dashed yellow;*/
 }
 
-.flex-container {
-  display: flex;
+.clickable-item-container {
+/*  display: flexbox;
   -webkit-flex-flow: row wrap;
-  justify-content: baseline;
+  justify-content: baseline;*/
+  list-style-type: none;
 }
 
-.flex-item {
+.clickable-item {
   /*background: #91DBDD;*/
-  border: 3px solid white;
-  background-color: #7FFFD4;
-  color: #383835;
-  /*width: 300px;*/
+  border: 2px solid white;
+  /*background-color: #7FFFD4;*/ /*mint-green*/
+  background-color: #00275E; /*midnight-blue*/
+  width: 300px;
   /*min-height: 90px;*/
   /*margin-right: 10px;*/
   /*margin-top: 10px;*/
-  padding: 15px;
-  margin: 3px;
+  /*padding-bottom: 5px;*/
+  margin: 5px;
   text-align: center;
-  list-style-type: none;
   border-radius: 10px;
 }
 
-.doodad {
-  color: blue;
-  font-size: 20px;
+.copy-button {
+  display: block;
+  font-weight: bold;
+  padding: 5px 15px;
+  margin: 10px auto;
+  color: #FEB729;
+  background: -webkit-linear-gradient(#888, #555);
+  background: linear-gradient(#888, #404040);
+  border: 0 none;
+  border-radius: 3px;
+  cursor: pointer;
 }
 
-.hits, .doodadId {
+.hits{
   /*border: 1px dashed yellow;*/
-  color: gray;
-  font-size: 10px;
-  padding-top: 9px;
+  color: #555;
+  font-size: 12px;
+  margin-bottom: 10px;
 }
+
+/*.colorDivTest {
+  width: 20px;
+  height: 20px;
+  color: orange;
+  background-color: purple;
+}*/
+
 
