@@ -2,6 +2,7 @@ var ClickBox = React.createClass({displayName: "ClickBox",
   loadFromServer: function() {
     $.ajax({
       url: this.props.url,
+      // url: 'http://localhost:4000/clickables',
       dataType: 'json',
       cache: false,
       success: function(data) {
@@ -15,6 +16,7 @@ var ClickBox = React.createClass({displayName: "ClickBox",
     });
   },
   handleClickSubmit: function(doodad){
+    // debugger;
     var doodadData = this.state.data;
     var newDoodad = doodadData.concat([doodad]);
     this.setState({data: newDoodad});
@@ -22,6 +24,7 @@ var ClickBox = React.createClass({displayName: "ClickBox",
     //submit to server and refresh
     $.ajax({
       url: this.props.url,
+      // url: 'http://localhost:4000/clickables',
       dataType: 'json',
       type: 'POST',
       data: doodad,
@@ -42,7 +45,7 @@ var ClickBox = React.createClass({displayName: "ClickBox",
   },
   render: function() {
     return (
-      React.createElement("div", {className: "clickBox"},
+        React.createElement("div", {className: "clickBox"},
         React.createElement(ClickableForm, {onClickSubmit: this.handleClickSubmit}),
         React.createElement(ClickableList, {data: this.state.data})
       )
@@ -157,5 +160,6 @@ var ClickableForm = React.createClass({displayName: "ClickableForm",
 
 React.render(
   React.createElement(ClickBox, {url: "data.json", pollInterval: 5000}),
+  // React.createElement(ClickBox, {url: "http://localhost:4000/clickables", pollInterval: 5000}),
   document.getElementById('content')
 );
